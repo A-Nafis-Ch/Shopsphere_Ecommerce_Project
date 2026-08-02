@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 """
 Django settings for core project.
 
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
     # Custom Apps
 
     'products',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}
