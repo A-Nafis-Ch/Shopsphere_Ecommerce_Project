@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Third Party Apps
 
     'rest_framework',
+    'corsheaders',
 
     # Custom Apps
 
@@ -54,6 +55,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # For CORS
+    'django.middleware.common.CommonMiddleware', # For CORS
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,5 +149,9 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", # Allowing React to Django
+]
 
 # AUTH_USER_MODEL = "accounts.User"
