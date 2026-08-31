@@ -25,7 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     path("", include("products.urls")),
-    # path("", include("accounts.urls")),
+    path("", include("accounts.urls")),
 
     path(
         "api/login/",
@@ -36,6 +36,6 @@ urlpatterns = [
     path(
         "api/token/refresh/",
         TokenRefreshView.as_view(),
-        name="refresh",
+        name="token_refresh",
     ),
 ]
